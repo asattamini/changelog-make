@@ -1,12 +1,12 @@
 {
   "name": "changelog-make",
-  "version": "0.0.0",
-  "description": "Changelog manager for your project",
+  "version": "0.0.1",
+  "description": "Changelog manager from CLI for your project",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig-build.json",
-    "dev": "npx ts-node --esm src/changelog.ts"
+    "dev": "npx ts-node --esm src/index.ts"
   },
   "author": "Alexandre Sattamini",
   "license": "ISC",

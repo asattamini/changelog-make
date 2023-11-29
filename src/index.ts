@@ -69,4 +69,4 @@ const ask = async () => {
   console.log(`Happy Coding :)`)
 }
 
-ask()
+export default ask
