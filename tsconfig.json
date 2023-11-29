@@ -1,0 +1,20 @@
+{
+  "include": ["src", "tests"],
+  "compilerOptions": {
+    "rootDirs": ["src", "tests"],
+    "baseUrl": "src",
+    "target": "es2017",
+    "moduleResolution": "node",
+    "module": "ES2015",
+    "declaration": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "emitDeclarationOnly": false,
+  }
+}

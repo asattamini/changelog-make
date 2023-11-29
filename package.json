@@ -1,0 +1,21 @@
+{
+  "name": "changelog-make",
+  "version": "0.0.0",
+  "description": "Changelog manager for your project",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig-build.json",
+    "dev": "npx ts-node --esm src/changelog.ts"
+  },
+  "author": "Alexandre Sattamini",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "enquirer": "^2.4.1"
+  },
+  "type": "module"
+}
