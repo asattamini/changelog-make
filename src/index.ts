@@ -48,13 +48,16 @@ const ask = async () => {
   const header = `### ${type}\r\n`
   const content = `${task} - [${section}] - ${message}`
 
-  const file = `./changelog/${task}.md`
+  const dirName = `changelog`;
+  const file = `./${dirName}/${task}.md`
 
   try {
+    if(!fs.existsSync(dirName)) fs.mkdirSync(dirName);
     fs.writeFileSync(file, header, { encoding: 'utf-8' })
     fs.promises.appendFile(file, content)
   } catch (error) {
-    console.log('Some error occurred while trying to save de file. Make sure you have a folder named changelog on the project root');
+    console.log('Some error occurred while trying to save de file or create the folder. Make sure you have a folder named changelog on the project root');
+    console.log(error);
     process.exit(0)
   }
 
