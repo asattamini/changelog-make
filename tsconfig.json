@@ -1,11 +1,11 @@
 {
   "include": ["src", "tests"],
   "compilerOptions": {
-    "rootDirs": ["src", "tests"],
+    "rootDir": "src",
     "baseUrl": "src",
-    "target": "es2017",
+    "module": "commonjs",
+    "target": "ES5",
     "moduleResolution": "node",
-    "module": "ES2015",
     "declaration": true,
     "outDir": "./dist",
     "removeComments": true,
