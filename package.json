@@ -1,6 +1,6 @@
 {
   "name": "changelog-make",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Changelog manager from CLI for your project",
   "main": "dist/index.js",
   "bin": "dist/index.js",
