@@ -15,6 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "declarationMap": true,
     "sourceMap": true,
-    "emitDeclarationOnly": false,
+    "emitDeclarationOnly": false
   }
 }
