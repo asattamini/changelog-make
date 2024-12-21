@@ -12,10 +12,12 @@
   "author": "Alexandre Sattamini",
   "license": "ISC",
   "devDependencies": {
+    "@types/edit-json-file": "^1.7.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
   },
   "dependencies": {
+    "edit-json-file": "^1.8.0",
     "enquirer": "^2.4.1"
   },
   "type": "commonjs",
