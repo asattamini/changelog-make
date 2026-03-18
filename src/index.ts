@@ -3,6 +3,7 @@ import addChangelog from "./scripts/add";
 import read from "./scripts/read";
 import updateFile from "./scripts/updateFile";
 import release from "./scripts/release";
+import releaseBeta from "./scripts/releaseBeta";
 
 const parameters = process.argv.slice(2);
 
@@ -17,21 +18,24 @@ const checkValidParams = () => {
     "--help",
     "--read",
     "--release",
+    "--releaseBeta",
     "--major",
     "--minor",
     "--patch",
     "--no-push",
   ];
 
+  const releaseCommands = ["--release", "--releaseBeta"]
+
   const releaseParams = ["--major", "--minor", "--patch"];
 
-  if (parameters.length > 1 && parameters[0] !== "--release") {
+  if (parameters.length > 1 && !releaseCommands.includes(parameters[0])) {
     throw new Error("Invalid parameters. Use --help for usage");
   }
 
   if (
     parameters.length === 3 &&
-    parameters[0] !== "--release" &&
+    !releaseCommands.includes(parameters[0]) &&
     parameters[2] !== "--no-push"
   ) {
     throw new Error("Invalid parameters. Use --help for usage");
@@ -41,7 +45,7 @@ const checkValidParams = () => {
     if (!validParams.includes(param)) {
       throw new Error("Invalid parameter name. Use --help for usage");
     }
-    if (param === "--release" && !releaseParams.includes(parameters[1])) {
+    if (releaseCommands.includes(param) && !releaseParams.includes(parameters[1])) {
       throw new Error(
         "Invalid semver type for --release. Please use --major, --minor or --patch"
       );
@@ -51,6 +55,9 @@ const checkValidParams = () => {
 
 checkValidParams();
 const command = parameters[0];
+
+const git = parameters[2] && parameters[2] === "--no-push" ? false : true;
+
 switch (command) {
   case "--add":
     console.log("Let's create your changelog file... this will be quick");
@@ -64,9 +71,12 @@ switch (command) {
     console.log("Let's read your changelog file... this will be quick");
     read();
     break;
-  case "--release":
+  case "--releaseBeta":
+    console.log("Let's start your release beta process... this will be quick");
+    releaseBeta(parameters[1], git);
+    break;
+   case "--release":
     console.log("Let's start your release process... this will be quick");
-    const git = parameters[2] && parameters[2] === "--no-push" ? false : true;
     release(parameters[1], git);
     break;
   case "--help":
@@ -85,7 +95,9 @@ switch (command) {
       "\n",
       "--read   reads all records in changelog folder and prints to console",
       "\n",
-      "--release [--major --minor --patch] [--no-push]  updates version in manifest.json and CHANGELOG.md, and creates a new tag in git. Use --no-push to avoid pushing to remote"
+      "--release [--major --minor --patch] [--no-push]  updates version in manifest.json and CHANGELOG.md, and creates a new tag in git. Use --no-push to avoid pushing to remote",
+      "\n",
+      "--releaseBeta [--major --minor --patch] [--no-push]  updates beta version in manifest.json and creates a new beta tag in git. Use --no-push to avoid pushing to remote"
     );
     break;
 }
