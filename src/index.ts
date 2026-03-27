@@ -4,6 +4,8 @@ import read from "./scripts/read";
 import updateFile from "./scripts/updateFile";
 import release from "./scripts/release";
 import releaseBeta from "./scripts/releaseBeta";
+import readVersion from "./scripts/readVersion";
+
 
 const parameters = process.argv.slice(2);
 
@@ -23,6 +25,7 @@ const checkValidParams = () => {
     "--minor",
     "--patch",
     "--no-push",
+    "--readVersion"
   ];
 
   const releaseCommands = ["--release", "--releaseBeta"]
@@ -59,6 +62,9 @@ const command = parameters[0];
 const git = parameters[2] && parameters[2] === "--no-push" ? false : true;
 
 switch (command) {
+  case "--readVersion":
+    readVersion();
+    break;
   case "--add":
     console.log("Let's create your changelog file... this will be quick");
     addChangelog();
