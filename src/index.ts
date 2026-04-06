@@ -74,7 +74,6 @@ switch (command) {
     updateFile();
     break;
   case "--read":
-    console.log("Let's read your changelog file... this will be quick");
     read();
     break;
   case "--releaseBeta":
