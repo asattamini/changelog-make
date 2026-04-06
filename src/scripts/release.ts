@@ -49,8 +49,19 @@ export = function release(parameter: string, git: boolean) {
   checkBranch(branch);
 
   function updateRelease(version: string) {
-    let arrayVersion = version.split(".");
+    
     let newVersion = "";
+
+    //check for beta version
+    if(version.split("-").length > 1) {
+      newVersion = version.split("-")[0];
+      console.log("\x1b[33m%s\x1b[0m", `Current version: ${version}`);
+      console.log("\x1b[32m%s\x1b[0m", `New version: ${newVersion}`);
+      updateVersion(newVersion);
+      return;  
+    }
+
+    let arrayVersion = version.split(".");
 
     switch (parameter) {
       case "--major":
